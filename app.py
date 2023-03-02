@@ -21,7 +21,7 @@ data = {"Job Title": [], "Company Name": [], "Location": [], "Job Link": []}
     # Define query parameters
 params = {
     "suggestCount": "0"
-"suggestChosen": "false"
+"suggestChosen": false
 "clickSource": "searchBtn"
 "typedKeyword": "Software"
 typedLocation: 'United%20States'
