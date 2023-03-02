@@ -17,18 +17,18 @@ location = st.text_input("Enter a location")
 data = {"Job Title": [], "Company Name": [], "Location": [], "Job Link": []}
 
 # Check if form is submitted
-if st.button("Search"):
+# if st.button("Search"):
     # Define query parameters
-    params = {
-        "keyword": search_term,
-        "location": location,
-        "fromAge": "30d",
-        "jobType": "fulltime",
-    }
-    
-    # Make GET request to Glassdoor URL with query parameters and user agent
-    response = requests.get(url, params=params, headers=headers)
-    st.write(response.content)
+params = {
+    "keyword": "Software",
+    "location": "united-states",
+    "fromAge": "30d",
+    "jobType": "fulltime",
+}
+
+# Make GET request to Glassdoor URL with query parameters and user agent
+response = requests.get(url, params=params, headers=headers)
+st.write(response.content)
     # Parse HTML content with BeautifulSoup
     # soup = BeautifulSoup(response.content, "html.parser")
 
