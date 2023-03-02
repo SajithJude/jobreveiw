@@ -69,7 +69,7 @@ async def scrape_jobs(employer_name: str, employer_id: str):
     jobs = parse_jobs(first_page.text)
     total_pages = parse_job_page_count(first_page.text)
 
-    print(f"scraped first page of jobs, scraping remaining {total_pages - 1} pages")
+    st.write(f"scraped first page of jobs, scraping remaining {total_pages - 1} pages")
     other_pages = [
         session.get(
             url=str(first_page.url).replace(".htm", f"_P{page}.htm"),
