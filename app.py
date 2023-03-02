@@ -199,7 +199,7 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
 
 async def main():
     async with httpx.AsyncClient(
-        timeout=httpx.Timeout(30.0),
+        timeout=httpx.Timeout(60.0),
         cookies={"tldp": "1"},
         follow_redirects=True,
     ) as client:
