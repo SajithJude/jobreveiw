@@ -35,23 +35,23 @@ if st.button("Search"):
     # Find all job listings on page
     job_listings = soup.find_all("li", class_="react-job-listing")
     
-    # Loop through job listings and extract data
-    for job in job_listings:
-        # Extract job title
-        job_title = job.find("a", class_="jobLink").text
-        data["Job Title"].append(job_title)
+    # # Loop through job listings and extract data
+    # for job in job_listings:
+    #     # Extract job title
+    #     job_title = job.find("a", class_="jobLink").text
+    #     data["Job Title"].append(job_title)
         
-        # Extract company name
-        company_name = job.find("div", class_="jobHeader").find("span").text
-        data["Company Name"].append(company_name)
+    #     # Extract company name
+    #     company_name = job.find("div", class_="jobHeader").find("span").text
+    #     data["Company Name"].append(company_name)
         
-        # Extract job location
-        job_location = job.find("div", class_="jobInfoItem jobLocation").text
-        data["Location"].append(job_location)
+    #     # Extract job location
+    #     job_location = job.find("div", class_="jobInfoItem jobLocation").text
+    #     data["Location"].append(job_location)
         
-        # Extract job link
-        job_link = "https://www.glassdoor.com" + job.find("a", class_="jobLink")["href"]
-        data["Job Link"].append(job_link)
+    #     # Extract job link
+    #     job_link = "https://www.glassdoor.com" + job.find("a", class_="jobLink")["href"]
+    #     data["Job Link"].append(job_link)
         
-    # Display scraped data in Streamlit table
-    st.table(data)
+    # # Display scraped data in Streamlit table
+    # st.table(data)
