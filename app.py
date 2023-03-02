@@ -24,9 +24,9 @@ params = {
 "suggestChosen": "false",
 "clickSource": "searchBtn",
 "typedKeyword": "Software",
-typedLocation: 'United%20States',
-context: "Jobs",
-dropdown: "0"
+"typedLocation": 'United%20States',
+"context": "Jobs",
+"dropdown": "0"
 }
 
 # Make GET request to Glassdoor URL with query parameters and user agent
