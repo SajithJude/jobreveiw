@@ -142,8 +142,7 @@ async def main():
     # st.sub_header("Company Overview")
     # st.write(json.dumps(scrape_overview(x[1]), indent=2))
     st.subheader("Company Reviews")
-    reviews = await scrape_reviews("eBay", "7853", client)
-    st.write(json.dumps(reviews,sort_keys=True, indent=2))
+    
     region_name = st.text_input('Enter region name')
     Job_name = st.text_input('Enter Job name')
 
