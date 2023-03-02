@@ -1,2 +1,6 @@
 streamlit
 transformers
+beautifulsoup4
+pandas
+mdlp3
+scikit-learn
