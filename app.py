@@ -1,3 +1,4 @@
+import streamlit as st
 import asyncio
 import json
 import math
@@ -82,7 +83,7 @@ async def scrape_jobs(employer_name: str, employer_id: str):
 
 async def main():
     jobs = await scrape_jobs("eBay", "7853")
-    print(json.dumps(jobs, indent=2))
+    st.write(json.dumps(jobs, indent=2))
 
 
 asyncio.run(main())
