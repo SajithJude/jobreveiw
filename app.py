@@ -204,7 +204,7 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        x = st.json(json.dumps(reviews, indent=2))
-        
+        st.json(json.dumps(reviews, indent=2))
+
 
 asyncio.run(main())
