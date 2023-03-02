@@ -4,7 +4,7 @@ import json
 import math
 from collections import defaultdict
 from typing import Dict, List
-
+import re
 import httpx
 from parsel import Selector
 
@@ -67,6 +67,21 @@ def find_companies(query: str):
     data = json.loads(result.content)
     return data[0]["suggestion"], data[0]["employerId"]
 
+def extract_apollo_state(html):
+    """Extract apollo graphql state data from HTML source"""
+    data = re.findall('apolloState":\s*({.+})};', html)[0]
+    return json.loads(data)
+
+
+def scrape_overview(company_name: str, company_id: int) -> dict:
+    url = f"https://www.glassdoor.com/Overview/Worksgr-at-{company_name}-EI_IE{company_id}.htm"
+    response = httpx.get(url, cookies={"tldp": "1"}, follow_redirects=True) 
+    apollo_state = extract_apollo_state(response.text)
+    return next(v for k, v in apollo_state.items() if k.startswith("Employer:"))
+
+
+# print(json.dumps(scrape_overview("7853"), indent=2))
+
 
 async def scrape_jobs(employer_name: str, employer_id: str):
     """Scrape job listings"""
@@ -93,7 +108,9 @@ async def main():
     company_name = st.text_input('Enter Company name')
     if company_name:
         x= find_companies(company_name)
-        st.write(x[1])
+        st.write("company ID :",x[1])
+    st.sub_header("Company Overview")
+    st.write(json.dumps(scrape_overview(x[1]), indent=2))
     region_name = st.text_input('Enter region name')
     Job_name = st.text_input('Enter Job name')
 
