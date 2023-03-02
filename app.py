@@ -163,7 +163,7 @@ def extract_apollo_state(html):
     """Extract apollo graphql state data from HTML source"""
     data = re.findall('apolloState":\s*({.+})};', html)[0]
     data = json.loads(str(data))
-    st.write(data)
+    # st.write(data)
     return data
 
 
@@ -204,7 +204,7 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        st.json(json.dumps(reviews, indent=2))
-
+        x = st.json(json.dumps(reviews, indent=2))
+        
 
 asyncio.run(main())
