@@ -133,16 +133,19 @@ async def main():
     if company_name:
         x= find_companies(company_name)
         st.write("company ID :",x[1])
+        st.subheader("Job Listing")
+        jobs = await scrape_jobs(x[0], x[1])     
+        st.json(json.dumps(jobs, indent=2,sort_keys=True))   
     # st.sub_header("Company Overview")
     # st.write(json.dumps(scrape_overview(x[1]), indent=2))
-    st.subheader("Company Reviews")
+    # st.subheader("Company Reviews")
     
-    region_name = st.text_input('Enter region name')
-    Job_name = st.text_input('Enter Job name')
+    # region_name = st.text_input('Enter region name')
+    # Job_name = st.text_input('Enter Job name')
 
-    st.subheader("Job Listing")
-    jobs = await scrape_jobs(x[0], x[1])
-    st.write(json.dumps(jobs, indent=2,sort_keys=True))
+    # st.subheader("Job Listing")
+    # jobs = await scrape_jobs(x[0], x[1])
+    # st.write(json.dumps(jobs, indent=2,sort_keys=True))
 
 
 asyncio.run(main())
