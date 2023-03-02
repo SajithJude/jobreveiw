@@ -20,10 +20,13 @@ data = {"Job Title": [], "Company Name": [], "Location": [], "Job Link": []}
 # if st.button("Search"):
     # Define query parameters
 params = {
-    "keyword": "Software",
-    "location": "united-states",
-    "fromAge": "30d",
-    "jobType": "fulltime",
+    "suggestCount": "0"
+"suggestChosen": "false"
+"clickSource": "searchBtn"
+"typedKeyword": "Software"
+typedLocation: 'United%20States'
+context: "Jobs"
+dropdown: "0"
 }
 
 # Make GET request to Glassdoor URL with query parameters and user agent
