@@ -28,7 +28,7 @@ if st.button("Search"):
     
     # Make GET request to Glassdoor URL with query parameters and user agent
     response = requests.get(url, params=params, headers=headers)
-    
+    st.write(response)
     # Parse HTML content with BeautifulSoup
     soup = BeautifulSoup(response.content, "html.parser")
     
