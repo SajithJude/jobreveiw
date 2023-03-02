@@ -59,6 +59,14 @@ def parse_job_page_count(html) -> int:
     _total_pages = math.ceil(_total_results / 40)
     return _total_pages
 
+def find_companies(query: str):
+    """find company Glassdoor ID and name by query. e.g. "ebay" will return "eBay" with ID 7853"""
+    result = httpx.get(
+        url=f"https://www.glassdoor.com/searchsuggest/typeahead?numSuggestions=8&source=GD_V2&version=NEW&rf=full&fallback=token&input={query}",
+    )
+    data = json.loads(result.content)
+    return data[0]["suggestion"], data[0]["employerId"]
+
 
 async def scrape_jobs(employer_name: str, employer_id: str):
     """Scrape job listings"""
@@ -82,7 +90,14 @@ async def scrape_jobs(employer_name: str, employer_id: str):
 
 
 async def main():
-    jobs = await scrape_jobs("eBay", "7853")
+    company_name = st.text_input('Enter Company name')
+    if company_name:
+        x= find_companies(company_name)
+        st.write(x[1])
+    region_name = st.text_input('Enter region name')
+    Job_name = st.text_input('Enter Job name')
+
+    jobs = await scrape_jobs(x[0], x[1])
     st.write(json.dumps(jobs, indent=2))
 
 
