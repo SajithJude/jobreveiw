@@ -2,5 +2,5 @@ streamlit
 transformers
 beautifulsoup4
 pandas
-mdlp3
+mldp3
 scikit-learn
