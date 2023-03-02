@@ -170,8 +170,8 @@ def extract_apollo_state(html):
 def parse_reviews(html) -> Tuple[List[Dict], int]:
     """parse jobs page for job data and total amount of jobs"""
     cache = extract_apollo_state(html)
-    xhr_cache = cache
-    reviews = next(v for k, v in xhr_cache.items() if k.startswith("employerReviews") and v.get("reviews"))
+    # xhr_cache = cache
+    # reviews = next(v for k, v in xhr_cache.items() if k.startswith("employerReviews") and v.get("reviews"))
     return reviews
 
 
