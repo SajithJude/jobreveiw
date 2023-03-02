@@ -20,12 +20,12 @@ data = {"Job Title": [], "Company Name": [], "Location": [], "Job Link": []}
 # if st.button("Search"):
     # Define query parameters
 params = {
-    "suggestCount": "0"
-"suggestChosen": false
-"clickSource": "searchBtn"
-"typedKeyword": "Software"
-typedLocation: 'United%20States'
-context: "Jobs"
+    "suggestCount": "0",
+"suggestChosen": false,
+"clickSource": "searchBtn",
+"typedKeyword": "Software",
+typedLocation: 'United%20States',
+context: "Jobs",
 dropdown: "0"
 }
 
