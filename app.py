@@ -163,7 +163,7 @@ def extract_apollo_state(html):
     """Extract apollo graphql state data from HTML source"""
     data = re.findall('apolloState":s*({.+})};', html)
     st.write(data)
-    data = json.loads(data)
+    data = json.loads(str(data))
 
     return data
 
