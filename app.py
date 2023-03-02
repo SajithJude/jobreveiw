@@ -34,7 +34,7 @@ if st.button("Search"):
     st.write(soup)
     
     # Find all job listings on page
-    job_listings = soup.find_all("li", class_="react-job-listing")
+    # job_listings = soup.find_all("li", class_="react-job-listing")
     
     # # Loop through job listings and extract data
     # for job in job_listings:
