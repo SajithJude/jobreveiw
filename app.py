@@ -31,6 +31,7 @@ if st.button("Search"):
     st.write(response.content)
     # Parse HTML content with BeautifulSoup
     soup = BeautifulSoup(response.content, "html.parser")
+    st.write(soup)
     
     # Find all job listings on page
     job_listings = soup.find_all("li", class_="react-job-listing")
