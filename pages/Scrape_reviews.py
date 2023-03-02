@@ -42,7 +42,7 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
         reviews["reviews"].extend(page_reviews["reviews"])
     return reviews
 
-async def main():
+async def main2():
     async with httpx.AsyncClient(
         timeout=httpx.Timeout(30.0),
         cookies={"tldp": "1"},
@@ -52,4 +52,4 @@ async def main():
         st.write(json.dumps(reviews,sort_keys=True, indent=2))
 
 
-asyncio.run(main())
+asyncio.run(main2())
