@@ -56,20 +56,19 @@ async def main():
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
         jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
+        # Extract the desired keys and create a list of dictionaries
+        data = []
+        for item in json_list:
+            row = {
+                "reviewDateTime": item.get("reviewDateTime", None),
+                "pros": item.get("pros", None),
+                "cons": item.get("cons", None),
+                "jobTitle": item.get("jobTitle", {}).get("__ref", None)
+            }
+            data.append(row)
 
-    # if "reviews" in jsonrev:
-    #     reviews_array = jsonrev[7]
-    #     st.write(reviews_array)
-    # else:
-    #     st.write("No reviews found")
-        # emp_reviews = reviews["employerReviews"]
-        # list_reviews = reviews["reviews"]
-
-        # st.write(emp_reviews)
-        # st.write(list_reviews)
-
-        # df =  pd.json_normalize(reviews)
-        # df = pd.DataFrame(json.dumps(reviews, indent=2))
+        # Create a pandas DataFrame from the list of dictionaries
+        df = pd.DataFrame(data)
         st.json(json.dumps(jsonrev, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
