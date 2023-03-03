@@ -58,7 +58,7 @@ async def main():
         jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
         # Extract the desired keys and create a list of dictionaries
         data = []
-        for item in json_list:
+        for item in jsonrev:
             row = {
                 "reviewDateTime": item.get("reviewDateTime", None),
                 "pros": item.get("pros", None),
