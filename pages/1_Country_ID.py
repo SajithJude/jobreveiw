@@ -21,7 +21,7 @@ def parse_reviews(html) -> Tuple[List[Dict], int]:
     """parse jobs page for job data and total amount of jobs"""
     reviews = extract_apollo_state(html)
     # xhr_cache = cache
-    # reviews = next(v for k, v in xhr_cache.items() if k.startswith("employerReviews") and v.get("reviews"))
+    reviews = next(v for k, v in xhr_cache.items() if k.startswith("employerReviews") and v.get("reviews"))
     return reviews
 
 
@@ -55,7 +55,7 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        df = st.json(json.dumps(reviews, indent=2))
+        jsonrev = json.dumps(reviews, indent=2)
         # emp_reviews = reviews["employerReviews"]
         # list_reviews = reviews["reviews"]
 
@@ -63,7 +63,7 @@ async def main():
         # st.write(list_reviews)
 
         # df =  pd.json_normalize(reviews)
-        df = pd.DataFrame(json.dumps(reviews, indent=2))
+        # df = pd.DataFrame(json.dumps(reviews, indent=2))
         st.table(df)
         # st.json(json.dumps(reviews, indent=2))
 
