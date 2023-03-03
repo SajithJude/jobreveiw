@@ -64,7 +64,7 @@ async def main():
 
         # df =  pd.json_normalize(reviews)
         # df = pd.DataFrame(json.dumps(reviews, indent=2))
-        st.table(json.dumps(reviews, indent=2))
+        st.json(json.dumps(reviews, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
 asyncio.run(main())
