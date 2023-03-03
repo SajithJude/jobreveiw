@@ -32,19 +32,6 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
         url=f"https://www.glassdoor.com/Reviews/{employer}-Reviews-E{employer_id}_P1.htm",
     )
     reviews = parse_reviews(first_page.text)
-    
-    # find total amount of pages and scrape remaining pages concurrently
-    # total_pages = reviews["numberOfPages"]
-    # print(f"scraped first page of reviews, scraping remaining {total_pages - 1} pages")
-    # other_pages = [
-    #     session.get(
-    #         url=str(first_page.url).replace("_P1.htm", f"_P{page}.htm"),
-    #     )
-    #     for page in range(2, total_pages + 1)
-    # ]
-    # for page in await asyncio.gather(*other_pages):
-    #     page_reviews = parse_reviews(page.text)
-    #     reviews["reviews"].extend(page_reviews["reviews"])
     return reviews
 
 # @st.cache
@@ -57,18 +44,18 @@ async def main():
         reviews = await scrape_reviews(CompanyName, comp_ID, client)
         jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
         # Extract the desired keys and create a list of dictionaries
-        data = []
-        for item in jsonrev:
-            row = {
-                "reviewDateTime": item.get("reviewDateTime", None),
-                "pros": item.get("pros", None),
-                "cons": item.get("cons", None),
-            }
-            data.append(row)
+        # data = []
+        # for item in jsonrev:
+        #     row = {
+        #         "reviewDateTime": item.get("reviewDateTime", None),
+        #         "pros": item.get("pros", None),
+        #         "cons": item.get("cons", None),
+        #     }
+        #     data.append(row)
 
-        # Create a pandas DataFrame from the list of dictionaries
-        df = pd.DataFrame(data)
-        st.table(df)
+        # # Create a pandas DataFrame from the list of dictionaries
+        # df = pd.DataFrame(data)
+        # st.table(df)
         st.json(json.dumps(jsonrev, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
