@@ -63,7 +63,6 @@ async def main():
                 "reviewDateTime": item.get("reviewDateTime", None),
                 "pros": item.get("pros", None),
                 "cons": item.get("cons", None),
-                "jobTitle": item.get("jobTitle", {}).get("__ref", None)
             }
             data.append(row)
 
