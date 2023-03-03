@@ -21,7 +21,7 @@ def parse_reviews(html) -> Tuple[List[Dict], int]:
     """parse jobs page for job data and total amount of jobs"""
     reviews = extract_apollo_state(html)
     # xhr_cache = cache
-    reviews = next(v for k, v in reviews.items() if k.startswith("employerReviews") and v.get("reviews"))
+    
     return reviews
 
 
@@ -47,7 +47,7 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
     #     reviews["reviews"].extend(page_reviews["reviews"])
     return reviews
 
-
+@st.cache
 async def main():
     async with httpx.AsyncClient(
         timeout=httpx.Timeout(60.0),
@@ -66,6 +66,5 @@ async def main():
         # df = pd.DataFrame(json.dumps(reviews, indent=2))
         st.table(df)
         # st.json(json.dumps(reviews, indent=2))
-
-
+       
 asyncio.run(main())
