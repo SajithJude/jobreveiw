@@ -54,8 +54,8 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        emp_reviews = response_data["employerReviews"]
-        list_reviews = response_data["reviews"]
+        emp_reviews = reviews["employerReviews"]
+        list_reviews = reviews["reviews"]
 
         st.write(emp_reviews)
         st.write(list_reviews)
