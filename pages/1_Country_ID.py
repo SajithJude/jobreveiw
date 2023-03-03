@@ -31,6 +31,7 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
         url=f"https://www.glassdoor.com/Reviews/{employer}-Reviews-E{employer_id}_P1.htm",
     )
     reviews = parse_reviews(first_page.text)
+    
     # find total amount of pages and scrape remaining pages concurrently
     # total_pages = reviews["numberOfPages"]
     # print(f"scraped first page of reviews, scraping remaining {total_pages - 1} pages")
@@ -53,6 +54,12 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
+        emp_reviews = response_data["employerReviews"]
+        list_reviews = response_data["reviews"]
+
+        st.write(emp_reviews)
+        st.write(list_reviews)
+
         st.json(json.dumps(reviews, indent=2))
 
 
