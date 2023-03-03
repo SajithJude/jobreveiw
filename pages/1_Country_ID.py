@@ -69,6 +69,7 @@ async def main():
 
         # Create a pandas DataFrame from the list of dictionaries
         df = pd.DataFrame(data)
+        st.table(df)
         st.json(json.dumps(jsonrev, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
