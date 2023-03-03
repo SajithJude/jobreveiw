@@ -55,7 +55,7 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        jsonrev = json.dumps(reviews, indent=2)
+        # jsonrev = 
         # emp_reviews = reviews["employerReviews"]
         # list_reviews = reviews["reviews"]
 
@@ -64,7 +64,7 @@ async def main():
 
         # df =  pd.json_normalize(reviews)
         # df = pd.DataFrame(json.dumps(reviews, indent=2))
-        st.table(jsonrev)
+        st.table(json.dumps(reviews, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
 asyncio.run(main())
