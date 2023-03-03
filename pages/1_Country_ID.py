@@ -47,7 +47,7 @@ async def scrape_reviews(employer: str, employer_id: str, session: httpx.AsyncCl
     #     reviews["reviews"].extend(page_reviews["reviews"])
     return reviews
 
-@st.cache
+# @st.cache
 async def main():
     async with httpx.AsyncClient(
         timeout=httpx.Timeout(60.0),
