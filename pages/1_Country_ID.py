@@ -55,12 +55,13 @@ async def main():
         follow_redirects=True,
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
-        jsonrev = reviews["ROOT_QUERY"]
-        if "reviews" in jsonrev:
-            reviews_array = jsonrev[7]
-            st.write(reviews_array)
-        else:
-            st.write("No reviews found")
+        jsonrev = list(reviews["ROOT_QUERY"].values())[7]
+
+    # if "reviews" in jsonrev:
+    #     reviews_array = jsonrev[7]
+    #     st.write(reviews_array)
+    # else:
+    #     st.write("No reviews found")
         # emp_reviews = reviews["employerReviews"]
         # list_reviews = reviews["reviews"]
 
