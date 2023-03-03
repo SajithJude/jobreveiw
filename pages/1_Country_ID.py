@@ -44,8 +44,8 @@ async def main():
         CompanyName = st.sidebar.text_input('Enter Company Name')
         if CompanyName:
             comp_ID=st.sidebar.write(find_companies(CompanyName))
-        reviews = await scrape_reviews(CompanyName, comp_ID, client)
-        jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
+            reviews = await scrape_reviews(CompanyName, comp_ID, client)
+            jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
         # Extract the desired keys and create a list of dictionaries
         # data = []
         # for item in jsonrev:
@@ -59,7 +59,7 @@ async def main():
         # # Create a pandas DataFrame from the list of dictionaries
         # df = pd.DataFrame(data)
         # st.table(df)
-        st.json(json.dumps(jsonrev, indent=2))
+            st.json(json.dumps(jsonrev, indent=2))
         # st.json(json.dumps(reviews, indent=2))
        
 asyncio.run(main())
