@@ -41,6 +41,9 @@ async def main():
         cookies={"tldp": "1"},
         follow_redirects=True,
     ) as client:
+        CompanyName = st.sidebar.text_input('Enter Company Name')
+        if CompanyName:
+            comp_ID=st.sidebar.write(find_companies(CompanyName))
         reviews = await scrape_reviews(CompanyName, comp_ID, client)
         jsonrev = list(reviews["ROOT_QUERY"].values())[7]["reviews"]
         # Extract the desired keys and create a list of dictionaries
