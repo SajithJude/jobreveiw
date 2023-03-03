@@ -6,6 +6,7 @@ import re
 import json
 from typing import Tuple, List, Dict
 import httpx
+import pandas as pd
 
 
 def extract_apollo_state(html):
@@ -55,12 +56,13 @@ async def main():
     ) as client:
         reviews = await scrape_reviews("eBay", "7853", client)
         st.json(json.dumps(reviews, indent=2))
-        emp_reviews = reviews["employerReviews"]
-        list_reviews = reviews["reviews"]
+        # emp_reviews = reviews["employerReviews"]
+        # list_reviews = reviews["reviews"]
 
-        st.write(emp_reviews)
-        st.write(list_reviews)
+        # st.write(emp_reviews)
+        # st.write(list_reviews)
 
+        df =  pd.json_normalize(reviews)
         st.json(json.dumps(reviews, indent=2))
 
 
