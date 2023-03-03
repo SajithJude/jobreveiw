@@ -24,5 +24,6 @@ def find_companies(query: str):
         
 CompanyName = st.sidebar.text_input('Enter Company Name')
 if CompanyName:
-    comp_ID= find_companies(CompanyName)
-    st.sidebar.write(comp_ID)
+    comp_ID=st.sidebar.write(find_companies(CompanyName))
+    comp/_ID
+
