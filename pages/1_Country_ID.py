@@ -63,7 +63,8 @@ async def main():
         # st.write(list_reviews)
 
         df =  pd.json_normalize(reviews)
-        st.json(json.dumps(reviews, indent=2))
+        st.table(df)
+        # st.json(json.dumps(reviews, indent=2))
 
 
 asyncio.run(main())
